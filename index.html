@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="estilos/stylelogin.css">
+    <link rel="stylesheet" href="estilos/media-query.css">
+</head>
+<body>
+    <main>
+        <section id="login">
+            <div id="imagem"></div>
+            <div id="formulario">
+                <h1>Login</h1>
+                <p>Seja bem-vindo novamente. Faça login para acessar sua conta e poder fazer as configurações no ambiente.</p>
+                <form id="loginForm">
+                    <div class="campo">
+                        <span class="material-symbols-outlined">person</span>
+                        <input type="email" id="logi" placeholder="Seu e-mail" required maxlength="30">
+                        <label for="login">Login</label>
+                    </div>
+                    <div class="campo">
+                        <span class="material-symbols-outlined">vpn_key</span>
+                        <input type="password" id="senha" placeholder="Sua senha" required minlength="8">
+                        <label for="senha">Senha</label>
+                    </div>
+                    <input type="submit" value="Entrar">
+                    <a href="esqueci.html" class="botao">Esqueci a senha <span class="material-symbols-outlined">mail</span></a>
+                </form>
+                <p id="message"></p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const USERNAME = 'nexus@nc';
+        const PASSWORD = 'nexus123';
+
+        const form = document.getElementById('loginForm');
+        const message = document.getElementById('message');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevenir o envio do formulário
+
+            const username = document.getElementById('logi').value.trim(); // Remover espaços antes e depois
+            const password = document.getElementById('senha').value.trim(); // Remover espaços antes e depois
+
+            console.log("Login digitado: " + username); // Verifique o valor digitado
+            console.log("Senha digitada: " + password); // Verifique o valor digitado
+
+            // Verificar se as credenciais são válidas
+            if (username === USERNAME && password === PASSWORD) {
+                message.textContent = 'Login bem-sucedido!';
+                message.style.color = 'green';
+                // Redirecionar para a página principal após o login bem-sucedido
+                window.location.href = 'casas.html';
+            } else {
+                message.textContent = 'Login falhou. Por favor, tente novamente.';
+                message.style.color = 'red';
+            }
+        });
+    </script>
+</body>
+</html>
